@@ -1,7 +1,7 @@
 from PIL import Image
 from os import listdir
 
-root = "ImagesROOT"
+root = "C:
 for directory in directories:
     for i in os.listdir(directory):
         currImage = Image.open(image)
