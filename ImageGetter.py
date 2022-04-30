@@ -72,8 +72,8 @@ def jpegFind(query):
 def filter(query):
     while(True):
         result = 0;
-        resultJPEG, jpegList = jpegFind(query)
-        resultTrans, transList = transFind(query)
+        resultJPEG, jpegList = jpegFind(query.name)
+        resultTrans, transList = transFind(query.name)
         print("JPEG: ", resultJPEG)
         print("Transparent: ", resultTrans)
         if(resultJPEG==0 and resultTrans==0): 
@@ -83,21 +83,15 @@ def filter(query):
         result = resultJPEG + resultTrans
         imageList = list(jpegList)
         imageList.extend(x for x in transList if x not in imageList)
-        deleteImage(imageList, "imagesROOT", query)
+        deleteImage(imageList, "imagesROOT", query.name)
         #get some new images
-        downloader.download(query, limit=num+result,  output_dir="bin", adult_filter_off=False, force_replace=False, timeout=60, filter="transparent", verbose=True)
+        downloader.download(query.name, limit=query.amount + result,  output_dir="bin", adult_filter_off=True, force_replace=False, timeout=60, filter="transparent", verbose=True)
 
         #delete the entries that need deleted
-        deleteImage(imageList, "bin", query)
+        deleteImage(imageList, "bin", query.name)
                     
 #main program
-cont = True
-while(cont):
-    val = input("do you want to download more categories? (Y/N)   ")
-    if val != "Y" and val != "y":
-        cont = False
-        continue
-    query = input("What do you want images of?   ")
-    num = int(input("How many images of "+ query + " do you want?   "))
-    downloader.download(query, limit=num,  output_dir="imagesROOT", adult_filter_off=False, force_replace=False, timeout=60, filter="transparent", verbose=True) 
-    filter(query)
+def imageGetter(queryList):
+    for query in queryList:
+        downloader.download(query.name, limit=query.amount,  output_dir="imagesROOT", adult_filter_off=True, force_replace=False, timeout=60, filter="transparent", verbose=True) 
+        filter(query)
