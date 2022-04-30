@@ -1,9 +1,5 @@
-from google_images_search import GoogleImagesSearch
+from bing_image_downloader import downloader
 
-#Define our google images identity
-gis = GoogleImagesSearch('GCS_DEVELOPER_KEY', 'GCS_CX')
-
-#Ask user if they want more images, and if so, what and how many
 cont = True
 while(cont):
     val = input("do you want to download more categories? (Y/N)   ")
@@ -11,16 +7,5 @@ while(cont):
         cont = False
         continue
     query = input("What do you want images of?   ")
-    num = int(input("How many "+ query + "'s do you want?   "))
-
-    #define our search parameters
-    _search_params = {
-        'q': '...',
-        'num': 10,
-        'fileType': 'jpg|png', 
-        'imgDominantColor': 'green', 
-    }
-
-    #Actually search
-    gis.search(search_params=_search_params, path_to_dir='imagesROOT')
-    
+    num = int(input("How many images of "+ query + " do you want?   "))
+    downloader.download(query, limit=num,  output_dir="imagesROOT", adult_filter_off=False, force_replace=False, timeout=60, filter="transparent", verbose=True) 

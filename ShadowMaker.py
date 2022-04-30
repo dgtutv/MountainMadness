@@ -1,5 +1,4 @@
 import numpy
-
 from PIL import Image, ImageEnhance
 import os
 
