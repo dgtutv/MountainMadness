@@ -1,0 +1,33 @@
+.Opening{
+    background-image: url("img/background.png");
+    background-position: center; 
+    background-repeat: no-repeat;
+    background-size: cover; 
+    height: 100%;
+    width: 100%;
+    flex-grow: 1;
+
+    /* display: grid; */
+    /* grid-template-columns: 1fr 1fr 5fr; */
+}
+
+.start-button{
+    background-color: #000000; /* Green */
+    border: 3px solid white;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 100px;
+    margin-top: 380px;
+    margin-left: 50px;
+    padding: 50px 120px;
+    border-radius: 50px;
+    margin-bottom: 110px;
+}
+
+.start-button:hover{
+    background-color: green;
+    color: black;
+}

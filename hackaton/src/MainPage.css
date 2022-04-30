@@ -1,0 +1,43 @@
+.MainPage{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+
+    background-image: linear-gradient(to right, #4238cc , #fa0000);
+    /* background-image: url("img/background.png");
+    background-position: center; 
+    background-repeat: no-repeat;
+    background-size: cover; */
+    flex-grow: 1;
+}
+
+.picture{
+    margin: 50px auto;
+    font-size: 50px;
+    color: white;
+}
+
+.choises{
+    display:grid;
+    grid-template-columns: 200px 200px;
+    grid-row: auto auto;
+    grid-column-gap: 80px;
+    grid-row-gap: 40px;
+    margin-top: 250px;
+}
+
+.btn{
+    font-size: 40px;
+    padding: 20px;
+    background-color: white;
+    color: black;
+    border-radius: 20px;
+    border: 2px solid black;
+}
+
+.btn:hover{
+    background-color: black;
+    color: white;
+}
+
