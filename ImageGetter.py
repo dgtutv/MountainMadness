@@ -71,11 +71,11 @@ def jpegFind(query):
 #filters through 
 def filter(query):
     while(True):
+        result = 0;
         resultJPEG, jpegList = jpegFind(query)
         resultTrans, transList = transFind(query)
         print("JPEG: ", resultJPEG)
         print("Transparent: ", resultTrans)
-        imageList = jpegList
         if(resultJPEG==0 and resultTrans==0): 
             return
 
