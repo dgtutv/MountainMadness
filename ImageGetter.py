@@ -3,25 +3,24 @@ from PIL import Image, ImageEnhance
 import os
 
 #deletes files from given list of images
-def deleteImage(imageList):
-    root = "bin"
+def deleteImage(imageList, root, query):
     for subdirectory, directory, images in os.walk(root):
         for image in images:
             if image in imageList:
-                os.remove(deleteRoot+"\\"+image)
+                os.remove(root+"\\"+query+"\\"+image)
                 imageList.remove(image)
                     
 #deletes images that are more than 50% transparent
 def transFind(query):
     root = "imagesROOT"
     findRoot = "imagesROOT\\"+query
-    totalCounter = 0
-    transCounter = 0
     findCounter = 0
     deleteImages=[]
     for subdirectory, directory, images in os.walk(root):
         if subdirectory == findRoot:
             for image in images:
+                totalCounter = 0
+                transCounter = 0
                 currImage = Image.open(subdirectory+"\\"+image)
                 currImage = currImage.convert("RGBA")
 
@@ -45,10 +44,13 @@ def transFind(query):
                             transCounter+=1
                         else:
                             currImage.putpixel((x,y), (0, 0, 0, 255))
+                                            
+                if transCounter == 0:
+                    continue
                 if transCounter/totalCounter >.9:
-                    totalCounter+=1
+                    findCounter+=1
                     deleteImages.append(image)
-    return totalCounter, deleteImages
+    return findCounter, deleteImages
 
 #deletes images that are jpegs, also returns number of jpegs found
 def jpegFind(query):
@@ -71,20 +73,22 @@ def filter(query):
     while(True):
         resultJPEG, jpegList = jpegFind(query)
         resultTrans, transList = transFind(query)
+        print("JPEG: ", resultJPEG)
+        print("Transparent: ", resultTrans)
         imageList = jpegList
         if(resultJPEG==0 and resultTrans==0): 
             return
 
         #combine the two lists and give the combined list to delete function
+        result = resultJPEG + resultTrans
         imageList = list(jpegList)
         imageList.extend(x for x in transList if x not in imageList)
-        deleteImage(imageList)
-
+        deleteImage(imageList, "imagesROOT", query)
         #get some new images
         downloader.download(query, limit=num+result,  output_dir="bin", adult_filter_off=False, force_replace=False, timeout=60, filter="transparent", verbose=True)
 
         #delete the entries that need deleted
-        deleteImage(imageList)
+        deleteImage(imageList, "bin", query)
                     
 #main program
 cont = True
