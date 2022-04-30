@@ -4,7 +4,7 @@ Animal Spotting <br />
 Website: <br />
 
 What our web application does<br />
-An interactive multiple choice game where you identify the spotted animal based on the shape of the spot: 
+An interactive multiple choice game where you identify the spotted animal based on the shape of the spot.
 <br />
 Team Members<br />
 Louis Luu<br />
