@@ -4,11 +4,12 @@
     align-items: center;
     height: 100%;
 
-    background-image: linear-gradient(to right, #4238cc , #fa0000);
-    /* background-image: url("img/background.png");
+    /* background-image: linear-gradient(to right, #4238cc , #fa0000); */
+
+    background-image: url("img/background3.png");
     background-position: center; 
     background-repeat: no-repeat;
-    background-size: cover; */
+    background-size: cover;
     flex-grow: 1;
 }
 
