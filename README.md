@@ -1,4 +1,4 @@
-<head><strong> MountainMadness2022 </strong></head><br />
+<head>  <font size="+4"><strong> MountainMadness2022 </strong></font></head><br/>
 Animal Spotting <br />
 Website: <br /> <br />
 
