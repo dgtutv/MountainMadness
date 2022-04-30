@@ -5,7 +5,9 @@ import os
 
 root = "imagesROOT"
 for subdirectory, directory, images in os.walk(root):
+    counter = 0
     for image in images:
+        counter +=1;
         print(image)
         currImage = Image.open(subdirectory+"\\"+image)
         currImage = currImage.convert("RGBA")
@@ -30,4 +32,4 @@ for subdirectory, directory, images in os.walk(root):
                     currImage.putpixel((x,y), (0, 0, 0, 255))
 
         #save the image
-        currImage.save(subdirectory+"\\"+"dark-"+image)
+        currImage.save(subdirectory+"\\"+"dark-"+str(counter)+".png")

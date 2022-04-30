@@ -47,7 +47,7 @@ def transFind(query):
                                             
                 if transCounter == 0:
                     continue
-                if transCounter/totalCounter >.9:
+                if transCounter/totalCounter >.9 or 1-(transCounter/totalCounter) >.9:
                     findCounter+=1
                     deleteImages.append(image)
     return findCounter, deleteImages
