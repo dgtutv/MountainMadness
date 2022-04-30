@@ -1,3 +1,5 @@
+import ImageGetter
+
 from PIL import Image, ImageEnhance
 import os
 
