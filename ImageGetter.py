@@ -10,7 +10,7 @@ def deleteImage(imageList, root, query):
                 os.remove(root+"\\"+query+"\\"+image)
                 imageList.remove(image)
                     
-#deletes images that are more than 50% transparent
+#deletes images that are more than 90% transparent
 def transFind(query):
     root = "imagesROOT"
     findRoot = "imagesROOT\\"+query
