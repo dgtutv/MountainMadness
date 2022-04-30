@@ -1,4 +1,4 @@
-MountainMadness2022 <br />
+<strong> MountainMadness2022 </strong><br />
 Animal Spotting <br />
 Website: <br /> <br />
 
