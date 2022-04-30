@@ -1,10 +1,11 @@
-from PIL import Image
-from os import listdir
+from PIL import Image, ImageEnhance
+import os
 
-root = "C:
-for directory in directories:
-    for i in os.listdir(directory):
-        currImage = Image.open(image)
+root = "imagesROOT"
+for subdirectory, directory, images in os.walk(root):
+    for image in images:
+        print(image)
+        currImage = Image.open(subdirectory+"\\"+image)
         modifier = ImageEnhance.Brightness(currImage)
         output = modifier.enhance(0)
-        output.save(image.filename+"-dark")
+        output.save("dark-"+image)
